@@ -47,7 +47,7 @@ input {
 }
 
 hr {
-  margin-top: 20px;
+  margin: 20px 0;
   border: 1px solid var(--off-white);
   height: 0px;
   width: 570px;
@@ -71,7 +71,11 @@ a > img:hover {
 /* Utilites */
 .container {
   max-width: 750px;
-  margin: 200px auto;
+  height: 600px;
+  margin: 70px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background: var(--white);
   padding: 40px;
   border-radius: 20px;
@@ -140,7 +144,12 @@ a > img:hover {
 
   a > img {
     right: 145px;
-    top: 175px;
-    padding: 7px;
+    top: 236px;
+    padding: 10px;
+  }
+
+  hr {
+    width: 290px;
+    top: 250px;
   }
 }

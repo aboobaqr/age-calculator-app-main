@@ -103,10 +103,10 @@ btn.addEventListener('click', function () {
 
       // Check if its a valid day
       if (
-        monthInput.value == 4 ||
+        (monthInput.value == 4 ||
         monthInput.value == 6 ||
         monthInput.value == 9 ||
-        (monthInput.value == 11 && dayInput.value > 30)
+        monthInput.value == 11) && dayInput.value > 30
       ) {
         mustBeValid.classList.remove('hidden');
 
@@ -146,9 +146,3 @@ btn.addEventListener('click', function () {
     }
   }
 });
-
-body.addEventListener('click', function() {
-  removelabelDispErr([...labelErrMsg]);
-
-  removeInputDispErr([...inputErr]);
-})
