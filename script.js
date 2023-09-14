@@ -64,6 +64,10 @@ btn.addEventListener('click', function () {
     [...requiredTxt].forEach((cur) => {
       cur.classList.remove('hidden');
     });
+    
+    [...requiredTxt2].forEach((cur) => {
+      cur.classList.add('hidden');
+    });
 
     labelDisplayError([...labelErrMsg]);
 
@@ -104,9 +108,10 @@ btn.addEventListener('click', function () {
       // Check if its a valid day
       if (
         (monthInput.value == 4 ||
-        monthInput.value == 6 ||
-        monthInput.value == 9 ||
-        monthInput.value == 11) && dayInput.value > 30
+          monthInput.value == 6 ||
+          monthInput.value == 9 ||
+          monthInput.value == 11) &&
+        dayInput.value > 30
       ) {
         mustBeValid.classList.remove('hidden');
 
@@ -134,13 +139,34 @@ btn.addEventListener('click', function () {
 
           removeInputDispErr([...inputErr]);
 
-          const birthday = [
-            +yearInput.value,
-            +monthInput.value - 1,
-            +dayInput.value,
-          ];
+          if (
+            Number.isNaN(+monthInput.value) ||
+            Number.isNaN(+dayInput.value) ||
+            Number.isNaN(+yearInput.value)
+          ) {
+            [...requiredTxt2].forEach((cur) => {
+              cur.classList.remove('hidden');
+            });
 
-          calcAge(new Date(...birthday));
+            labelDisplayError([...labelErrMsg]);
+
+            inputDisplayError([...inputErr]);
+          } else {
+            [...requiredTxt].forEach((cur) => {
+              cur.classList.add('hidden');
+            });
+            removelabelDispErr([...labelErrMsg]);
+
+            removeInputDispErr([...inputErr]);
+
+            const birthday = [
+              +yearInput.value,
+              +monthInput.value - 1,
+              +dayInput.value,
+            ];
+
+            calcAge(new Date(...birthday));
+          }
         }
       }
     }
