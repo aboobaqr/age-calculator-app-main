@@ -16,6 +16,7 @@ const inputErr = document.querySelectorAll('.input');
 
 const mustBeValid = document.querySelector('.must-be-valid');
 const body = document.querySelector('body');
+const btnClear = document.querySelector('.btn-clear');
 
 // Functions
 const calcAge = (birthday) => {
@@ -64,7 +65,7 @@ btn.addEventListener('click', function () {
     [...requiredTxt].forEach((cur) => {
       cur.classList.remove('hidden');
     });
-    
+
     [...requiredTxt2].forEach((cur) => {
       cur.classList.add('hidden');
     });
@@ -159,16 +160,60 @@ btn.addEventListener('click', function () {
 
             removeInputDispErr([...inputErr]);
 
-            const birthday = [
-              +yearInput.value,
-              +monthInput.value - 1,
-              +dayInput.value,
-            ];
+            if (
+              yearInput.value == new Date().getFullYear() &&
+              monthInput.value > new Date().getMonth() + 1
+            ) {
+              [...requiredTxt2].forEach((cur) => {
+                cur.classList.remove('hidden');
+              });
 
-            calcAge(new Date(...birthday));
+              labelDisplayError([...labelErrMsg]);
+
+              inputDisplayError([...inputErr]);
+            } else {
+              [...requiredTxt].forEach((cur) => {
+                cur.classList.add('hidden');
+              });
+              removelabelDispErr([...labelErrMsg]);
+
+              removeInputDispErr([...inputErr]);
+
+              const birthday = [
+                +yearInput.value,
+                +monthInput.value - 1,
+                +dayInput.value,
+              ];
+
+              calcAge(new Date(...birthday));
+            }
           }
         }
       }
     }
   }
+});
+
+btnClear.addEventListener('click', function () {
+  dayInput.value = '';
+  monthInput.value = '';
+  yearInput.value = '';
+
+  [...requiredTxt].forEach((cur) => {
+    cur.classList.add('hidden');
+  });
+
+  [...requiredTxt2].forEach((cur) => {
+    cur.classList.add('hidden');
+  });
+
+  mustBeValid.classList.add('hidden');
+
+  removelabelDispErr([...labelErrMsg]);
+
+  removeInputDispErr([...inputErr]);
+
+  yearsDisplay.textContent = `- - `;
+  monthsDisplay.textContent = `- - `;
+  daysDisplay.textContent = `- - `;
 });

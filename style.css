@@ -118,6 +118,17 @@ a > img:hover {
   color: var(--primary-color);
 }
 
+.btn-clear {
+  position: absolute;
+  bottom: 30px;
+  background: var(--primary-color);
+  color: var(--white);
+  padding: 8px;
+  border-radius: 15px;
+  border: none;
+  cursor: pointer;
+}
+
 /* Mobile */
 @media (max-width: 560px) {
   input {
