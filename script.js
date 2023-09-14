@@ -161,8 +161,9 @@ btn.addEventListener('click', function () {
             removeInputDispErr([...inputErr]);
 
             if (
-              yearInput.value == new Date().getFullYear() &&
-              monthInput.value > new Date().getMonth() + 1
+              (yearInput.value == new Date().getFullYear() &&
+                monthInput.value > new Date().getMonth() + 1) ||
+              dayInput.value > new Date().getDate()
             ) {
               [...requiredTxt2].forEach((cur) => {
                 cur.classList.remove('hidden');
@@ -217,3 +218,5 @@ btnClear.addEventListener('click', function () {
   monthsDisplay.textContent = `- - `;
   daysDisplay.textContent = `- - `;
 });
+
+console.log(new Date().getDate());

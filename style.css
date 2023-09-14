@@ -129,6 +129,10 @@ a > img:hover {
   cursor: pointer;
 }
 
+.btn-clear:hover {
+  background: var(--Off-black);
+}
+
 /* Mobile */
 @media (max-width: 560px) {
   input {
