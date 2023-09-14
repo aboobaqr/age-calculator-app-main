@@ -1,0 +1,146 @@
+/* Variables */
+:root {
+  --primary-color: hsl(259, 100%, 65%);
+  --secondary-color: hsl(0, 100%, 67%);
+
+  --white: hsl(0, 0%, 100%);
+  --off-white: hsl(0, 0%, 94%);
+  --Light-grey: hsl(0, 0%, 86%);
+  --Smokey-grey: hsl(0, 1%, 44%);
+  --Off-black: hsl(0, 0%, 8%);
+}
+
+/* Reset */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* Elements */
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--Light-grey);
+}
+
+label {
+  font-weight: bold;
+  font-size: x-small;
+  color: var(--Smokey-grey);
+}
+
+input {
+  display: block;
+  font-size: 32px;
+  width: 150px;
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  color: #000;
+  border: 1px solid var(--off-white);
+}
+
+input {
+  outline-width: 1px;
+  outline-color: var(--Light-grey);
+}
+
+hr {
+  margin-top: 20px;
+  border: 1px solid var(--off-white);
+  height: 0px;
+  width: 570px;
+  position: absolute;
+  top: 180px;
+}
+
+a > img {
+  background: var(--primary-color);
+  padding: 15px;
+  border-radius: 50%;
+  position: absolute;
+  right: 65px;
+  top: 160px;
+}
+
+a > img:hover {
+  background-color: var(--Off-black);
+}
+
+/* Utilites */
+.container {
+  max-width: 750px;
+  margin: 200px auto;
+  background: var(--white);
+  padding: 40px;
+  border-radius: 20px;
+  border-bottom-right-radius: 200px;
+  position: relative;
+}
+
+.form {
+  display: grid;
+  grid-template-columns: repeat(3, 180px);
+}
+
+.error {
+  color: var(--secondary-color);
+}
+
+.required,
+.required2 {
+  color: var(--secondary-color);
+  font-size: x-small;
+  font-style: italic;
+}
+
+.input-error {
+  border: 1px solid var(--secondary-color);
+}
+
+.hidden {
+  display: none;
+}
+
+.age-result {
+  margin: 40px 0;
+  font-size: 3.5rem;
+  font-weight: 900;
+  font-style: italic;
+}
+
+.result-display {
+  color: var(--primary-color);
+}
+
+/* Mobile */
+@media (max-width: 560px) {
+  input {
+    width: 90px;
+    font-size: 25px;
+  }
+  .container {
+    width: 360px;
+    margin: 50px auto;
+    border-bottom-right-radius: 150px;
+  }
+
+  .form {
+    grid-template-columns: repeat(3, 100px);
+    margin-bottom: 5px;
+    gap: 5px;
+  }
+
+  .age-result {
+    margin-top: 60px;
+    font-size: 2.3rem;
+    font-weight: 900;
+  }
+
+  a > img {
+    right: 145px;
+    top: 175px;
+    padding: 7px;
+  }
+}
