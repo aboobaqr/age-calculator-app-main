@@ -161,9 +161,8 @@ btn.addEventListener('click', function () {
             removeInputDispErr([...inputErr]);
 
             if (
-              (yearInput.value == new Date().getFullYear() &&
-                monthInput.value > new Date().getMonth() + 1) ||
-              dayInput.value > new Date().getDate()
+              yearInput.value == new Date().getFullYear() &&
+              monthInput.value > new Date().getMonth() + 1
             ) {
               [...requiredTxt2].forEach((cur) => {
                 cur.classList.remove('hidden');
@@ -180,13 +179,30 @@ btn.addEventListener('click', function () {
 
               removeInputDispErr([...inputErr]);
 
-              const birthday = [
-                +yearInput.value,
-                +monthInput.value - 1,
-                +dayInput.value,
-              ];
+              if (
+                yearInput.value == new Date().getFullYear() &&
+                monthInput.value - 1 == new Date().getMonth() &&
+                dayInput.value > new Date().getDate()
+              ) {
+                mustBeValid.classList.remove('hidden');
 
-              calcAge(new Date(...birthday));
+                labelDisplayError([...labelErrMsg]);
+
+                inputDisplayError([...inputErr]);
+              } else {
+                mustBeValid.classList.add('hidden');
+                removelabelDispErr([...labelErrMsg]);
+
+                removeInputDispErr([...inputErr]);
+
+                const birthday = [
+                  +yearInput.value,
+                  +monthInput.value - 1,
+                  +dayInput.value,
+                ];
+
+                calcAge(new Date(...birthday));
+              }
             }
           }
         }
@@ -218,5 +234,3 @@ btnClear.addEventListener('click', function () {
   monthsDisplay.textContent = `- - `;
   daysDisplay.textContent = `- - `;
 });
-
-console.log(new Date().getDate());
